@@ -10,7 +10,7 @@ The mutators might break this invariant during the execution and if the followin
 
 Note that only write to black objects need to be considered. Because gray and white objects are not yet scanned anyway. 
 
-?:Also mutators and collectors can not operate on a same object at the same time, it has to be atomic.
+? Also mutators and collectors can not operate on a same object at the same time, it has to be atomic.
 
 There are two write barrier strategy to prevent these two conditions from both holding. Note that write barrier is less expensive as read barrier, as it happens less frequently.
 
