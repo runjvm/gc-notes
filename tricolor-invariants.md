@@ -1,4 +1,8 @@
-## Tricolor Marking Abstraction and Invariants
+## Tricolor Marking
+
+[overview](https://en.wikipedia.org/wiki/Tracing_garbage_collection#Tri-color_marking)
+
+## Invariants
 
 Tricolor Marking abstracts away how the graph is traversed, breadth-first or depth first. According to this abstraction, the following invariant perverses:
 
