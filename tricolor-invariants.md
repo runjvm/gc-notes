@@ -17,7 +17,11 @@ There are two write barrier strategies to prevent these two conditions from both
 ## Incremental update
 - Prevent the first condition
 - Add the white object referenced by the written pointer to gray set, or add the black object to gray set
-- The new allocated objects considered white by Dijkstra based on the assumption that most objects are short-lived, so a second traversal of the root set is needed to find those new live objects
+- The new allocated objects considered white by Dijkstra et al. based on the assumption that most objects are short-lived, so a second traversal of the root set is needed to find those new live objects
+
+[Dijkstra78](gc-notes/papers/On-The-Fly-GC.dijkstra78.pdf) 
+
+[Steele75](gc-notes/papers/Multiprocessing-Compactifying-GC.steele75.pdf) 
 
 ## Snapshot At the Beginning
 - Prevent the second condition
