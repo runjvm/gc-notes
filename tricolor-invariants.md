@@ -19,6 +19,8 @@ There are two write barrier strategies to prevent these two conditions from both
 - Add the white object referenced by the written pointer to gray set, or add the black object to gray set
 - The new allocated objects considered white by Dijkstra et al. based on the assumption that most objects are short-lived, so a second traversal of the root set is needed to find those new live objects
 
+Steele et al. revert the black object to gray when such writes occur, while Dijkstra et al. add the white object to gray set, which is more conservative, because if the stored-into field is again overwritten, the white object may become unreachable. Steele's algorithm reclaims this object at the end of the curent collection while Dijkstra's does not.
+
 [Dijkstra78](papers/On-The-Fly-GC.dijkstra78.pdf) 
 
 [Steele75](papers/Multiprocessing-Compactifying-GC.steele75.pdf) 
@@ -31,6 +33,8 @@ There are two write barrier strategies to prevent these two conditions from both
 - The new allocated objects are thus considered black objects, as if they've already been scanned, and left to the next GC
 - This implies that no object can be freed during the collection (not count old garbage)
 - The view of the reachibility graph is the old graph + new allocated objects
+
+[Yuasa90](papers/Real-Time-GC-on-General-Purpose-Machine.yuasa90.pdf)
 
 ## Old References Becomes Garbage
 When a write happens to a black object, if this makes an old black or gray object, IU doesn't do anything, still keeps them. Since there is no information recorded that this old object is only referenced by the black object, and thus recognizing them as garbage would require a retrace since they've already been scanned or in the queue.
