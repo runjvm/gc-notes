@@ -12,7 +12,7 @@ Note that only write to black objects need to be considered. Because gray and wh
 
 Also mutators and collectors can not operate on a same object at the same time, it has to be atomic, since object is now a shared resource.
 
-There are two write barrier strategy to prevent these two conditions from both holding. Note that write barrier is less expensive as read barrier, as it happens less frequently.
+There are two write barrier strategies to prevent these two conditions from both holding. They prevent the first condition and the second condition respectively.
 
 ## Incremental update
 - Prevent the first condition
