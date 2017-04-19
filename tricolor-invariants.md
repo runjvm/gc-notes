@@ -41,6 +41,6 @@ Steele et al. revert the black object to gray when such writes occur, while Dijk
 [Yuasa90](papers/Real-Time-GC-on-General-Purpose-Machine.yuasa90.pdf)
 
 ## Old References Becomes Garbage
-When a write happens to a black object, if this makes an old black or gray object, IU doesn't do anything, still keeps them. Since there is no information recorded that this old object is only referenced by the black object, and thus recognizing them as garbage would require a retrace since they've already been scanned or in the queue.
+When a write happens to a black object, if this makes an old black or gray object become garbage, IU doesn't do anything, still keeps them. Since there is no information recorded that this old object is only referenced by the black object, and thus recognizing them as garbage would require a retrace since they've already been scanned or in the queue.
 
 When a write happens to a white or gray object, if this makes another old object becomes garbage, this old garbage will not be traced by IU. In contrast, these "new" garbages will still be considered as live by SAB since the old reference is copied.
