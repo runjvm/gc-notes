@@ -19,3 +19,6 @@ The concurrent collection cycle typically includes the following steps:
 - Concurrently sweep up the unreachable objects to the free lists used for allocation, using one processor.
 
 - Concurrently resize the heap and prepare the support data structures for the next collection cycle, using one processor.
+
+[Oracle CMS Overview](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/cms.html)
+[More details](https://plumbr.eu/handbook/garbage-collection-algorithms-implementations/concurrent-mark-and-sweep)
