@@ -21,8 +21,7 @@ There are two write barrier strategies to prevent these two conditions from both
 ## Incremental update
 - Prevent the first condition
 - Add the white object referenced by the written pointer to gray set, or add the black object to gray set
-- The new allocated objects are considered white by Dijkstra et al. based on the assumption that most objects are short-lived, so a second traversal of the root set is needed to find those new live objects
-- Not sure how it deals with new objects allocated after the second traversal of the root sets, does it consider them black then?
+- The new allocated objects are considered white by Dijkstra et al. based on the assumption that most objects are short-lived, so a second traversal of the root set is needed to find those new live objects. This phase needs to stop the world.
 
 Steele et al. revert the black object to gray when such writes occur, while Dijkstra et al. add the white object to gray set, which is more conservative, because if the stored-into field is again overwritten, the white object may become unreachable. Steele's algorithm reclaims this object at the end of the curent collection while Dijkstra's does not.
 
